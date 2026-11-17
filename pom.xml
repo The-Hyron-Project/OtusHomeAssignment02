@@ -26,9 +26,13 @@
         <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
         <lombok.version>1.18.22</lombok.version>
         <json-schema-validator.version>6.3.0</json-schema-validator.version>
-
+        <spring-test.version>7.0.10</spring-test.version>
+        <spring-context.version>7.0.10</spring-context.version>
 
         <base.url>https://wishlist.otus.kartushin.su</base.url>
+        <username>chaya</username>
+        <password>j7fzp1jsd</password>
+        <email>linn.lueilwitz@hotmail.com</email>
     </properties>
 
     <dependencies>
@@ -77,6 +81,17 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-context.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

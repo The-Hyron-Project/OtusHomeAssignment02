@@ -1,8 +1,16 @@
 package org.objects;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@AllArgsConstructor
+import lombok.Getter;
+
+@Getter
 public class Login {
   private String token;
+
+  @JsonCreator
+  public Login(@JsonProperty("token") String accessToken){
+    token = accessToken;
+  }
 }

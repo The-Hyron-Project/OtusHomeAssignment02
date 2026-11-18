@@ -9,7 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @AllArgsConstructor
-@Data
 @Builder
 public class GiftDto {
 

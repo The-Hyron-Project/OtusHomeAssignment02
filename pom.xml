@@ -22,17 +22,17 @@
         <spotbugs.version>4.10.5</spotbugs.version>
         <rest-assured.version>5.5.5</rest-assured.version>
         <jackson.version>1.9.13</jackson.version>
-        <junit-jupiter-params.version>5.10.2</junit-jupiter-params.version>
-        <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
-        <lombok.version>1.18.22</lombok.version>
+        <junit-jupiter-params.version>6.1.3</junit-jupiter-params.version>
+        <junit-jupiter-engine.version>6.1.3</junit-jupiter-engine.version>
+        <lombok.version>1.18.48</lombok.version>
         <json-schema-validator.version>6.3.0</json-schema-validator.version>
         <spring-test.version>7.0.10</spring-test.version>
         <spring-context.version>7.0.10</spring-context.version>
 
-        <base.url>https://wishlist.otus.kartushin.su</base.url>
-        <username>chaya</username>
-        <password>j7fzp1jsd</password>
-        <email>linn.lueilwitz@hotmail.com</email>
+        <base.url>https://api.wishlist.otus.kartushin.su</base.url>
+        <base.user>chaya</base.user>
+        <base.pass>j7fzp1jsd</base.pass>
+        <base.email>linn.lueilwitz@hotmail.com</base.email>
     </properties>
 
     <dependencies>
@@ -112,6 +112,10 @@
                 <configuration>
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
+                        <base.user>${base.user}</base.user>
+                        <base.pass>${base.pass}</base.pass>
+                        <base.email>${base.email}</base.email>
+
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

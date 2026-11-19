@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class TestConfiguration {
   private final String single = "singleton";
-  private final String proto = "prototype";
   private final String authorizationUserDto = "authorizationUserDto";
   private final String authorizationUserWishlistDto = "authorizationUserWishlistDto";
   private final String authorizationUserWishlistEditedDto = "authorizationUserWishlistEditedDto";

@@ -1,7 +1,6 @@
 package org.prepare;
 
 import org.dto.GiftDto;
-import java.math.BigDecimal;
 
 public class GiftDtoArray {
 
@@ -24,8 +23,8 @@ public class GiftDtoArray {
             "https://c.dns-shop.ru/thumb/st1/fit/0/0/26862d637d790729ff4fc4d6e9962959/"
             + "3d8aa1fc5ab13fc33026235a46f8b322c3ba8c14e5884eb2c758f72216422f3e"
             + ".png.webp",
-            false)
-    , new GiftDto("",
+            false),
+        new GiftDto("",
         "14.2\" Ноутбук Apple MacBook Pro M5 серебристый",
         "Ноутбук Apple MacBook Pro M5 на базе macOS подходит для учебы, работы и "
             + "решения повседневных задач. 14.2-дюймовый IPS-экран показывает яркую и "

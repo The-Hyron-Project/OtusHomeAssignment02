@@ -153,15 +153,15 @@ public class FirstGroupTests {
   //  Данный тест проверяет невозможность создания списка подарков без авторизации
   @Test
   public void CreateWishlistNoAuthNegativeTest() {
-    assertThat(wishlistApi.createWishlist(new Login(space), wishlistDto)
+    assertThat(wishlistApi.createWishlist(Login.builder().token(space).build(), wishlistDto)
         .extract().statusCode()).as(gistlistCreatedMessage).isEqualTo(forbiddenResponseCode);
   }
 
   //  Данный тест проверяет невозможность создания списка подарков без названия
   @Test
   public void CreateWishlistNoTitleNegativeTest() {
-    assertThat(wishlistApi.createWishlist(authApi.authorize(loginDto), new WishlistDto(space,
-        wishlistDescriptionWithNoTitle)).extract().statusCode())
+    assertThat(wishlistApi.createWishlist(authApi.authorize(loginDto), WishlistDto.builder()
+        .description(wishlistDescriptionWithNoTitle).build()).extract().statusCode())
         .as(gistlistCreatedMessage).isEqualTo(forbiddenResponseCode);
   }
 }

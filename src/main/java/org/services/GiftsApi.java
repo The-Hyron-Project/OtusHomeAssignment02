@@ -2,6 +2,7 @@ package org.services;
 
 import static io.restassured.RestAssured.given;
 
+import io.restassured.response.ValidatableResponse;
 import org.dto.GiftDto;
 import org.objects.Gift;
 import org.objects.Login;
@@ -12,7 +13,7 @@ public class GiftsApi extends AbsApi {
   private String baseGiftsPath = "/api/gifts/";
   private String wishlistPath = "wishlist/";
 
-  public Gift addGift(Login login, Wishlist wishlist, GiftDto dto) {
+  public ValidatableResponse addGift(Login login, Wishlist wishlist, GiftDto dto) {
     return given(reqSpec)
         .basePath(baseGiftsPath + wishlistPath + wishlist.getId())
         .auth().oauth2(login.getToken())
@@ -20,7 +21,12 @@ public class GiftsApi extends AbsApi {
         .when()
         .post()
         .then()
-        .log().all()
+        .log().all();
+  }
+
+
+  public Gift addGiftWithReturnValue(Login login, Wishlist wishlist, GiftDto dto) {
+    return addGift(login, wishlist, dto)
         .extract()
         .as(Gift.class);
   }
@@ -33,5 +39,15 @@ public class GiftsApi extends AbsApi {
         .delete()
         .then()
         .log().all();
- }
+  }
+
+  public ValidatableResponse getGiftById(Login login, Gift gift) {
+    return given(reqSpec)
+        .basePath(baseGiftsPath + gift.getId())
+        .auth().oauth2(login.getToken())
+        .when()
+        .get()
+        .then()
+        .log().all();
+  }
 }

@@ -1,7 +1,7 @@
 package org.springconfiguration;
 
-import org.DTO.LoginDto;
-import org.DTO.WishlistDto;
+import org.dto.LoginDto;
+import org.dto.WishlistDto;
 import org.services.AuthApi;
 import org.services.UserApi;
 import org.services.WishlistApi;
@@ -13,46 +13,50 @@ import org.springframework.context.annotation.Scope;
 public class TestConfiguration {
   private final String single = "singleton";
   private final String proto = "prototype";
-  private final String authorizationUserDTO = "authorizationUserDTO";
-  private final String authorizationUserWishlistDTO = "authorizationUserWishlistDTO";
+  private final String authorizationUserDto = "authorizationUserDTO";
+  private final String authorizationUserWishlistDto = "authorizationUserWishlistDTO";
+  private final String authorizationUserWishlistEditedDto = "authorizationUserWishlistEditedDTO";
   private final String baseUser = "base.user";
   private final String basePass = "base.pass";
   private final String testWishlistTitle = "Тестовый вишлист";
   private final String testWishlistDescription = "Описание тестового вишлиста";
+  private final String testWishlistEditedTitle = "Тестовый отредактированный вишлист";
+  private final String testWishlistEditedDescription = "Отредактированное описание тестового "
+      + "вишлиста";
 
-
-  @Bean(name = authorizationUserDTO)
+  @Bean(name = authorizationUserDto)
   @Scope(single)
-  public LoginDto getAuthorizationUserDTO(){
-    return new LoginDto(
-        System.getProperty(baseUser),
-        System.getProperty(basePass)
-    );
+  public LoginDto getAuthorizationUserDto() {
+    return new LoginDto(System.getProperty(baseUser), System.getProperty(basePass));
   }
 
   @Bean
   @Scope(single)
-  public AuthApi getAuthApi(){
+  public AuthApi getAuthApi() {
     return new AuthApi();
   }
 
   @Bean
   @Scope(single)
-  public UserApi getUserApi(){
+  public UserApi getUserApi() {
     return new UserApi();
   }
 
   @Bean
   @Scope(single)
-  public WishlistApi getWishlistApi(){
+  public WishlistApi getWishlistApi() {
     return new WishlistApi();
   }
 
-  @Bean(name = authorizationUserWishlistDTO)
+  @Bean(name = authorizationUserWishlistDto)
   @Scope(single)
-  public WishlistDto getWishlistDto(){
-    return new WishlistDto(testWishlistTitle,
-        testWishlistDescription
-    );
+  public WishlistDto getAuthorizationUserOriginalWishlistDto() {
+    return new WishlistDto(testWishlistTitle, testWishlistDescription);
+  }
+
+  @Bean(name = authorizationUserWishlistEditedDto)
+  @Scope(single)
+  public WishlistDto getAuthorizationUserEditedWishlistDto() {
+    return new WishlistDto(testWishlistEditedTitle, testWishlistEditedDescription);
   }
 }

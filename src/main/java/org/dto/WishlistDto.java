@@ -1,9 +1,8 @@
-package org.DTO;
+package org.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 
 @AllArgsConstructor

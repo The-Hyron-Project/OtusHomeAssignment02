@@ -1,10 +1,9 @@
 package org.objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 import java.util.Objects;
-
 import lombok.Getter;
 
 @Getter
@@ -15,10 +14,12 @@ public class Wishlist {
   private User owner;
   private List<Gift> gifts;
 
-  public Wishlist(@JsonProperty("id") String id, @JsonProperty("title") String title
-      , @JsonProperty("description") String description
-      , @JsonProperty("owner") User owner
-      , @JsonProperty("gifts") List<Gift> gifts) {
+  @JsonCreator
+  public Wishlist(@JsonProperty("id") String id,
+                  @JsonProperty("title") String title,
+                  @JsonProperty("description") String description,
+                  @JsonProperty("owner") User owner,
+                  @JsonProperty("gifts") List<Gift> gifts) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -46,6 +47,7 @@ public class Wishlist {
 
   @Override
   public String toString() {
-    return "Wishlist{" + "id='" + id + '\'' + ", title='" + title + '\'' + ", description='" + description + '\'' + ", owner=" + owner + ", gifts=" + gifts + '}';
+    return "Wishlist{" + "id='" + id + '\'' + ", title='" + title + '\'' + ", description='"
+        + description + '\'' + ", owner=" + owner + ", gifts=" + gifts + '}';
   }
 }

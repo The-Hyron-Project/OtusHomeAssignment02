@@ -1,16 +1,14 @@
 package org.services;
 
+import static io.restassured.RestAssured.given;
+
+import io.restassured.response.ValidatableResponse;
+import java.util.Arrays;
+import java.util.Objects;
+import lombok.Getter;
 import org.objects.Login;
 import org.objects.User;
 import org.objects.Wishlist;
-
-import java.util.Arrays;
-import java.util.Objects;
-
-import io.restassured.response.ValidatableResponse;
-import lombok.Getter;
-
-import static io.restassured.RestAssured.given;
 
 @Getter
 public class UserApi extends AbsApi {
@@ -20,7 +18,7 @@ public class UserApi extends AbsApi {
   private final String allUsersPath = "/api/users";
   private final String initialUserWishlistPath = "/api/wishlists/user/";
 
-  public ValidatableResponse getAllUsers(Login login){
+  public ValidatableResponse getAllUsers(Login login) {
     return given(reqSpec)
         .basePath(allUsersPath)
         .auth().oauth2(login.getToken())
@@ -30,13 +28,13 @@ public class UserApi extends AbsApi {
         .log().all();
   }
 
-  public User getCurrentUser(Login login){
+  public User getCurrentUser(Login login) {
     return Arrays.stream(getAllUsers(login)
         .extract()
         .as(User[].class))
-        .filter(u -> Objects.equals(u.getUsername()
-        , System.getProperty(baseUser)) && Objects.equals(u.getEmail()
-        , System.getProperty(baseEmail)))
+        .filter(u -> Objects.equals(u.getUsername(),
+            System.getProperty(baseUser)) && Objects.equals(u.getEmail(),
+            System.getProperty(baseEmail)))
         .findFirst()
         .get();
   }

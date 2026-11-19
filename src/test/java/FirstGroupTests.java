@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class FirstGroupTests {
 
   @Autowired
-  @Qualifier("authorizationUserDTO")
+  @Qualifier("authorizationUserDto")
   LoginDto loginDto;
 
   @Autowired
@@ -37,7 +37,7 @@ public class FirstGroupTests {
   WishlistApi wishlistApi;
 
   @Autowired
-  @Qualifier("authorizationUserWishlistDTO")
+  @Qualifier("authorizationUserWishlistDto")
   WishlistDto wishlistDto;
 
   Login login;
@@ -97,7 +97,7 @@ public class FirstGroupTests {
   //  Данный тест проверяет возможность создания и изменения списка подарков
   @Test
   public void CreateAndChangeWishlist02Test(@Autowired @Qualifier(
-      "authorizationUserWishlistEditedDTO") WishlistDto editedWishlistDto) {
+      "authorizationUserWishlistEditedDto") WishlistDto editedWishlistDto) {
     login = authApi.authorize(loginDto);
     user = userApi.getCurrentUser(login);
     wishlist = wishlistApi.createWishlistWithReturnValue(login, wishlistDto);

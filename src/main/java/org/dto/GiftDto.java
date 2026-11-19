@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 
 @AllArgsConstructor
-@Builder
+@Getter
 public class GiftDto {
 
   @JsonProperty("id")
@@ -22,7 +23,7 @@ public class GiftDto {
   private String imageUrl;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private int price;
 
   @JsonProperty("storeUrl")
   private String storeUrl;

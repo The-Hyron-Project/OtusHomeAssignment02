@@ -3,6 +3,7 @@ package org.springconfiguration;
 import org.dto.LoginDto;
 import org.dto.WishlistDto;
 import org.services.AuthApi;
+import org.services.GiftsApi;
 import org.services.UserApi;
 import org.services.WishlistApi;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +14,9 @@ import org.springframework.context.annotation.Scope;
 public class TestConfiguration {
   private final String single = "singleton";
   private final String proto = "prototype";
-  private final String authorizationUserDto = "authorizationUserDTO";
-  private final String authorizationUserWishlistDto = "authorizationUserWishlistDTO";
-  private final String authorizationUserWishlistEditedDto = "authorizationUserWishlistEditedDTO";
+  private final String authorizationUserDto = "authorizationUserDto";
+  private final String authorizationUserWishlistDto = "authorizationUserWishlistDto";
+  private final String authorizationUserWishlistEditedDto = "authorizationUserWishlistEditedDto";
   private final String baseUser = "base.user";
   private final String basePass = "base.pass";
   private final String testWishlistTitle = "Тестовый вишлист";
@@ -46,6 +47,12 @@ public class TestConfiguration {
   @Scope(single)
   public WishlistApi getWishlistApi() {
     return new WishlistApi();
+  }
+
+  @Bean
+  @Scope(single)
+  public GiftsApi getGiftsApi() {
+    return new GiftsApi();
   }
 
   @Bean(name = authorizationUserWishlistDto)

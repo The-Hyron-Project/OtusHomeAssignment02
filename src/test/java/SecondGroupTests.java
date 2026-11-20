@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -70,14 +69,11 @@ public class SecondGroupTests {
   private String reservedStateDiffersMessage = "Состояние резервирования отличается";
   private String giftFoundMessage = "Подарк найден";
   private String giftCreatedMessage = "Подарок создался";
-  private String usedID = "3fdf37bd-3df6-4146-b920-78db93df24d7";
-
+  private String nonExistentUsedID = "3fdf37bd-3df6-4146-b920-78db93df24d7";
 
   private int expectedGiftListLenth = 1;
   private int expectedNotAuthorizedResponceCode = 401;
   private int forbiddenResponseCode = 403;
-
-
 
   //  Тест проверяет возможность доабвления подарков в список подарков
 //  и их получения
@@ -85,7 +81,7 @@ public class SecondGroupTests {
   public void CreateAndFindMostExpensiveAndCheapestGifts01Test() {
     login = authApi.authorize(loginDto);
     user = userApi.getCurrentUser(login);
-    wishlistArray = userApi.getUserWishlists(login, user);
+    wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
     ArrayList<Gift> expectedGiftList = new ArrayList<>();
 
     assertThat(wishlistArray.length)
@@ -124,7 +120,7 @@ public class SecondGroupTests {
             });
           }
 
-      wishlistArray = userApi.getUserWishlists(login, user);
+      wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
       assertThat(wishlistArray.length)
           .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -152,7 +148,7 @@ public class SecondGroupTests {
           giftsApi.deleteGift(login, expectedGiftList.get(i));
         }
 
-      wishlistArray = userApi.getUserWishlists(login, user);
+      wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
       assertThat(wishlistArray.length)
           .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -169,7 +165,7 @@ public class SecondGroupTests {
   public void AddAndDeleteGiftAndCheckIfDeletedGiftIsUnavailable02Test() {
     login = authApi.authorize(loginDto);
     user = userApi.getCurrentUser(login);
-    wishlistArray = userApi.getUserWishlists(login, user);
+    wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
     assertThat(wishlistArray.length)
         .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -199,7 +195,7 @@ public class SecondGroupTests {
             .as(reservedStateDiffersMessage).isEqualTo(GiftDtoArray.giftDtoArray[0].getReserved());
       });
 
-      wishlistArray = userApi.getUserWishlists(login, user);
+      wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
       assertThat(wishlistArray.length)
           .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -211,7 +207,7 @@ public class SecondGroupTests {
       giftsApi.deleteGift(login, gift);
 
 
-      wishlistArray = userApi.getUserWishlists(login, user);
+      wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
       assertThat(wishlistArray.length)
           .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -232,7 +228,7 @@ public class SecondGroupTests {
   public void CreateWishlistNoTitleNegativeTest() {
     login = authApi.authorize(loginDto);
     user = userApi.getCurrentUser(login);
-    wishlistArray = userApi.getUserWishlists(login, user);
+    wishlistArray = wishlistApi.getUserWishlistsWithReturnValue(login, user);
 
     assertThat(wishlistArray.length)
         .as(wishlistArrayLenthDiffersMessage).isEqualTo(wishlistArrayExpectedLenth);
@@ -250,7 +246,7 @@ public class SecondGroupTests {
   public void CreateWishlistNoWishlistNegativeTest() {
     login = authApi.authorize(loginDto);
 
-    assertThat(giftsApi.addGift(login, Wishlist.builder().id(usedID).build(),
+    assertThat(giftsApi.addGift(login, Wishlist.builder().id(nonExistentUsedID).build(),
             GiftDtoArray.giftDtoArray[0])
         .extract().statusCode()).as(giftCreatedMessage)
         .isEqualTo(expectedNotAuthorizedResponceCode);

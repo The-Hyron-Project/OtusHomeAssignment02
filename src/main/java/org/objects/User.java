@@ -3,9 +3,11 @@ package org.objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class User {
   private String id;
   private String username;

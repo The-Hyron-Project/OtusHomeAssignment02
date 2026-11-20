@@ -14,9 +14,9 @@ import org.objects.Wishlist;
 public class UserApi extends AbsApi {
   private final String baseUser = "base.user";
   private final String baseEmail = "base.email";
-
+  private final String secondaryUser = "secondary.user";
+  private final String secondaryEmail = "secondary.email";
   private final String allUsersPath = "/api/users";
-  private final String initialUserWishlistPath = "/api/wishlists/user/";
 
   public ValidatableResponse getAllUsers(Login login) {
     return given(reqSpec)
@@ -39,15 +39,30 @@ public class UserApi extends AbsApi {
         .get();
   }
 
-  public Wishlist[] getUserWishlists(Login login, User user) {
+  public User getSecondaryUser(Login login) {
+    return Arrays.stream(getAllUsers(login)
+            .extract()
+            .as(User[].class))
+        .filter(u -> Objects.equals(u.getUsername(),
+            System.getProperty(secondaryUser)) && Objects.equals(u.getEmail(),
+            System.getProperty(secondaryEmail)))
+        .findFirst()
+        .get();
+  }
+
+  public Wishlist[] getUserWishlistsWithReturnValue(Login login, User user) {
+    return getUserWishlists(login, user)
+        .extract()
+        .as(Wishlist[].class);
+  }
+
+  public ValidatableResponse getUserWishlists(Login login, User user) {
     return given(reqSpec)
-        .basePath(initialUserWishlistPath + user.getId())
+        .basePath(allUsersPath + "/" + user.getId() + "/wishlists")
         .auth().oauth2(login.getToken())
         .when()
         .get()
         .then()
-        .log().all()
-        .extract()
-        .as(Wishlist[].class);
+        .log().all();
   }
 }

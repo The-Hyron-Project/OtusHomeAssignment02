@@ -19,7 +19,7 @@ public class GiftDtoArray {
                 + "тише работу под нагрузкой.",
             "https://www.dns-shop.ru/product/d27b67aec6220366/"
                 + "136-noutbuk-apple-macbook-air-m5-serebristyj/",
-            143999,
+            143999.0,
             "https://c.dns-shop.ru/thumb/st1/fit/0/0/26862d637d790729ff4fc4d6e9962959/"
             + "3d8aa1fc5ab13fc33026235a46f8b322c3ba8c14e5884eb2c758f72216422f3e"
             + ".png.webp",
@@ -36,7 +36,7 @@ public class GiftDtoArray {
             + "взаимодействия с периферией.",
         "https://www.dns-shop.ru/product/c645696eaa27d582/"
             + "142-noutbuk-apple-macbook-pro-m5-serebristyj/",
-        177999,
+        177999.0,
         "https://c.dns-shop.ru/thumb/st1/fit/0/0/b4fe030b1e38017fb20ba362b0c7ff76/"
             + "ea6c3f4c9c8fe8957a46a03c712ce90a54eace027efa90d511ea6aa792f1ddb3"
             + ".png.webp",
@@ -50,7 +50,7 @@ public class GiftDtoArray {
                 + "магнитный разъем для ускоренной зарядки MagSafe 3 port.",
             "https://www.dns-shop.ru/product/3fdcc34776c44500/"
                 + "142-noutbuk-apple-macbook-pro-m5-pro-cernyj/",
-            277999,
+            277999.0,
             "https://c.dns-shop.ru/thumb/st1/fit/0/0/a8299043912c80b6aa67c330d06ecf73/"
                 + "5ab9c8a423e76082bac8312e1eb2fc1c5de3916529f9d8f464d3032908e1f600"
                 + ".png.webp",
@@ -64,7 +64,7 @@ public class GiftDtoArray {
                 + "магнитным интерфейсом MagSafe 3 port с поддержкой ускоренной зарядки.",
             "https://www.dns-shop.ru/product/f0a4c63fdc2c42c6/"
                 + "162-noutbuk-apple-macbook-pro-m5-pro-cernyj/",
-           310999,
+           310999.0,
             "https://c.dns-shop.ru/thumb/st1/fit/0/0/3716a9483513ed0e8af2b43d16bfbeba/"
                 + "00c8859a0e9b80f74e703af6408b9c78d8e0b25d9fc2bcc34dec351819987fd1"
                 + ".png.webp",
@@ -78,7 +78,7 @@ public class GiftDtoArray {
                 + "магнитным интерфейсом MagSafe 3 port с поддержкой ускоренной зарядки.",
             "https://www.dns-shop.ru/product/45b7ec30e8f86169/"
                 + "162-noutbuk-apple-macbook-pro-m5-max-cernyj/",
-            549999,
+            549999.0,
             "https://c.dns-shop.ru/thumb/st1/fit/0/0/3716a9483513ed0e8af2b43d16bfbeba/"
                 + "00c8859a0e9b80f74e703af6408b9c78d8e0b25d9fc2bcc34dec351819987fd1"
                 + ".png.webp",

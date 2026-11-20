@@ -56,7 +56,7 @@ public class FirstGroupTests {
   private String gistlistNoDeletedMessage = "Список подарков не удалён";
   private String gistlistDiffersMessage = "Списоки подарков отличаются";
   private String gistlistCreatedMessage = "Список подарков создался";
-  private String space = "";
+  private String emptySpace = "";
   private String wishlistDescriptionWithNoTitle = "Описание списка без названия";
 
   private int forbiddenResponseCode = 403;
@@ -82,14 +82,14 @@ public class FirstGroupTests {
 //        (user.getEmail());
         softly.assertThat(wishlist.getGifts()).as(gistlistNotEmptyMessage).isNullOrEmpty();
 
-        assertThat(userApi.getUserWishlists(login, user))
+        assertThat(wishlistApi.getUserWishlistsWithReturnValue(login, user))
             .as(gistlistNotPresentMessage).contains(wishlist);
       });
 
     } finally {
       wishlistApi.deleteWishlist(login, wishlist);
 
-      assertThat(userApi.getUserWishlists(login, user))
+      assertThat(wishlistApi.getUserWishlistsWithReturnValue(login, user))
           .as(gistlistNoDeletedMessage).doesNotContain(wishlist);
     }
   }
@@ -132,7 +132,7 @@ public class FirstGroupTests {
 //        .isEqualTo(user.getEmail());
         softly.assertThat(editedWishlist.getGifts()).as(gistlistNotEmptyMessage).isNullOrEmpty();
 
-        assertThat(userApi.getUserWishlists(login, user))
+        assertThat(wishlistApi.getUserWishlistsWithReturnValue(login, user))
             .as(gistlistNotPresentMessage).contains(editedWishlist);
 
       });
@@ -142,9 +142,9 @@ public class FirstGroupTests {
       wishlistApi.deleteWishlist(login, editedWishlist);
 
       assertSoftly(softly -> {
-        assertThat(userApi.getUserWishlists(login, user))
+        assertThat(wishlistApi.getUserWishlistsWithReturnValue(login, user))
             .as(gistlistNoDeletedMessage).doesNotContain(wishlist);
-        assertThat(userApi.getUserWishlists(login, user))
+        assertThat(wishlistApi.getUserWishlistsWithReturnValue(login, user))
             .as(gistlistNoDeletedMessage).doesNotContain(editedWishlist);
       });
     }
@@ -153,7 +153,7 @@ public class FirstGroupTests {
   //  Данный тест проверяет невозможность создания списка подарков без авторизации
   @Test
   public void CreateWishlistNoAuthNegativeTest() {
-    assertThat(wishlistApi.createWishlist(Login.builder().token(space).build(), wishlistDto)
+    assertThat(wishlistApi.createWishlist(Login.builder().token(emptySpace).build(), wishlistDto)
         .extract().statusCode()).as(gistlistCreatedMessage).isEqualTo(forbiddenResponseCode);
   }
 

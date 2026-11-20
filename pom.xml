@@ -33,6 +33,9 @@
         <base.user>chaya</base.user>
         <base.pass>j7fzp1jsd</base.pass>
         <base.email>linn.lueilwitz@hotmail.com</base.email>
+        <secondary.user>jeff</secondary.user>
+        <secondary.pass>yuf7exb27</secondary.pass>
+        <secondary.email>shila.hickle@gmail.com</secondary.email>
     </properties>
 
     <dependencies>
@@ -115,7 +118,9 @@
                         <base.user>${base.user}</base.user>
                         <base.pass>${base.pass}</base.pass>
                         <base.email>${base.email}</base.email>
-
+                        <secondary.user>${secondary.user}</secondary.user>
+                        <secondary.pass>${secondary.pass}</secondary.pass>
+                        <secondary.email>${secondary.email}</secondary.email>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
